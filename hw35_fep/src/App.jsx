@@ -32,7 +32,7 @@ function App() {
     console.log(updatedList)
   };
 
-   function editEntry(values) {
+  function editEntry(values) {
     console.log('editing ', values.id);
     const updatedListEdit = dbResult.filter((entry) => entry.id !== values.id);
     let newEntry = {
@@ -70,12 +70,14 @@ function App() {
                                 },
                                 {
                                   path: "/form",
-                                  element: <EntryForm
-                                    addEntry={addEntry}/>,
+                                  element: <EntryForm  
+                                  addEntry={addEntry}/>,
                                 },
                                 {
                                   path: "/edit",
                                   element: <EditForm
+                                    deleteEntry={deleteEntry}
+                                    addEntry={addEntry}
                                     editEntry={editEntry}
                                     />,
                                 },

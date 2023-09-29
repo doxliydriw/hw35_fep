@@ -3,7 +3,8 @@ import { React, useState } from 'react';
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import EntryList from './EntryLlst';
  
-function EditForm(editEntry) {
+function EditForm(props) {
+    console.log(props.editEntry);
     let entry = useLocation().state;
     const navigate = useNavigate();
     const formik = useFormik({
@@ -15,9 +16,9 @@ function EditForm(editEntry) {
         onSubmit: (values) => {
         //  console.log(values)
             if (values.name && values.phone) {
-                                        editEntry(values);
-                                        // props.addEntry(values);
-                                        navigate('/');
+                props.editEntry(values);
+                // props.deleteEntry(values.id);
+                                        navigate('/list');
         } else {
          alert('Please enter all mandatory data');
         }
